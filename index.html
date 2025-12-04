@@ -1,340 +1,162 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0GBPE80SB0"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0GBPE80SB0');
-  </script>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kureti Hemanth Kumar | Python Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- Fonts & Icons -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
 
-  <!-- Main CSS -->
-  <link rel="stylesheet" href="style.css">
+    body { background: #0e0e0e; color: #fff; overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; left: 0; width: 100%; padding: 18px 50px; display: flex; justify-content: space-between; align-items: center; background: rgba(20,20,20,0.65); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 1000; transition: .4s ease; }
+    nav.hide { transform: translateY(-100%); }
+
+    nav .nav-links a { margin-left: 25px; text-decoration: none; color: #ccc; transition: .3s; font-weight: 500; }
+    nav .nav-links a:hover { color: #0ef; }
+
+    header { min-height: 100vh; display: flex; align-items: center; padding: 120px 10% 0; }
+
+    .hero-text h1 { font-size: 3.5rem; font-weight: 700; }
+    .hero-badge { color: #0ef; font-weight: 600; margin-bottom: 10px; }
+
+    .cursor { display: inline-block; width: 3px; background: #0ef; animation: blink .8s infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .btn { display: inline-block; padding: 10px 20px; border-radius: 6px; text-decoration: none; margin-top: 15px; margin-right: 10px; transition: .3s; font-weight: 500; }
+    .primary-btn { background: #0ef; color: #000; }
+    .primary-btn:hover { background: #00c8c8; }
+
+    .ghost-btn { border: 1px solid #aaa; color: #aaa; }
+    .ghost-btn:hover { border-color: #0ef; color: #0ef; }
+
+    section { padding: 80px 10%; opacity: 0; transform: translateY(40px); transition: .9s ease; }
+    section.reveal { opacity: 1; transform: translateY(0); }
+
+    .section-header { text-align: center; margin-bottom: 40px; }
+    .section-header h2 { font-size: 2.4rem; font-weight: 700; }
+    .section-tagline { color: #aaa; margin-top: 6px; }
+
+    .card { background: #151515; padding: 25px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05); transition: .3s ease; }
+    .card:hover { transform: translateY(-6px); }
+
+    .section-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
+    ul.card-list { list-style: none; display: grid; gap: 20px; }
+
+    .edu-card img { width: 55px; margin-right: 15px; }
+    .edu-card { display: flex; align-items: center; gap: 15px; }
+
+    footer { text-align: center; padding: 30px; margin-top: 50px; color: #777; }
+    /* Floating background animation */
+  .shape { position: fixed; width: 180px; height: 180px; background: radial-gradient(circle, #0ef3 0%, #0ef1 40%, transparent 70%); border-radius: 50%; filter: blur(40px); animation: floatAnim 12s infinite ease-in-out; z-index: -1; }
+  .shape:nth-child(1){ top: 10%; left: 5%; animation-delay: 0s; }
+  .shape:nth-child(2){ bottom: 15%; right: 10%; animation-delay: 3s; }
+  @keyframes floatAnim { 0%{ transform: translateY(0) scale(1); opacity: .7; } 50%{ transform: translateY(-40px) scale(1.15); opacity: 1; } 100%{ transform: translateY(0) scale(1); opacity: .7; }}
+
+  /* Card glow hover */
+  .card:hover { box-shadow: 0 0 18px #0ef5; }
+
+  /* Hero fade-slide animation */
+  header .hero-text { animation: heroEnter 1.4s ease forwards; opacity: 0; transform: translateY(30px); }
+  @keyframes heroEnter { to { opacity: 1; transform: translateY(0); }}
+
+</style>
 </head>
 <body>
-  <!-- Mobile Menu & Theme Toggle -->
-  <button class="menu-toggle" aria-label="Toggle navigation"
-    onclick="document.querySelector('nav').classList.toggle('show')">☰</button>
-  <button class="theme-toggle" aria-label="Toggle theme"
-    onclick="document.body.classList.toggle('light-mode')">🌗</button>
+  <div class="shape"></div>
+  <div class="shape"></div>
 
-  <!-- Navbar -->
   <nav id="navbar">
-    <div class="nav-inner">
-      <div class="nav-left">
-        <span class="nav-logo-dot"></span>
-        <span class="nav-name">Kureti Hemanth Kumar</span>
-        <span class="nav-role">Python Developer</span>
-      </div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact">Contact</a>
-      </div>
+    <div class="nav-left"><span style="color:#0ef; font-size:22px; font-weight:700;">Hemanth</span></div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <div class="spacer"></div>
-
-  <!-- Hero / Header -->
   <header>
-    <div class="hero-layout">
-      <div class="hero-main card">
-
-        <div class="hero-text">
-          <p class="hero-badge">
-            <span class="dot"></span> Open to Internships · Python Development
-          </p>
-          <h1>Kureti Hemanth Kumar</h1>
-          <p class="role-line">
-            <span id="typing"></span><span class="cursor">|</span>
-          </p>
-          <p class="hero-subtitle">
-            Python developer learning and building projects in automation, data processing, 
-            and machine learning with strong fundamentals in core Python and programming.
-          </p>
-          <div class="hero-links">
-            <a href="#contact" class="btn primary-btn">
-              <i class="fa-solid fa-paper-plane"></i> Contact Me
-            </a>
-            <a href="https://github.com/Hemanth20044" target="_blank" class="btn ghost-btn">
-              <i class="fab fa-github"></i> GitHub
-            </a>
-            <a href="https://www.linkedin.com/uas/login-submit" target="_blank" class="btn ghost-btn">
-              <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="hero-side card">
-        <h3>Snapshot</h3>
-        <div class="stats-grid">
-          <div class="stat">
-            <span class="stat-number">3<sup>rd</sup> Year</span>
-            <span class="stat-label">B.Tech AI & ML</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">3+</span>
-            <span class="stat-label">Python Projects</span>
-          </div>
-          <div class="stat">
-            <span class="stat-number">10+</span>
-            <span class="stat-label">Workshops / Events</span>
-          </div>
-        </div>
-        <p class="mini-note">
-          Currently exploring <strong>Python</strong>, <strong>Automation</strong>, and
-          <strong>Machine Learning</strong> with a strong programming foundation.
-        </p>
-      </div>
+    <div class="hero-text">
+      <p class="hero-badge">● Open to Internships · Python Development</p>
+      <h1>Kureti Hemanth Kumar</h1>
+      <p><span id="typing"></span><span class="cursor"></span></p>
+      <p style="max-width:500px; margin-top:10px; color:#ccc;">Python developer learning and building projects in automation, data processing, and machine learning.</p>
+      <a href="#contact" class="btn primary-btn">Contact Me</a>
+      <a href="https://github.com/Hemanth20044" target="_blank" class="btn ghost-btn">GitHub</a>
     </div>
   </header>
 
-  <main>
-    <!-- About -->
-    <section id="about">
-      <div class="section-header">
-        <h2>About Me</h2>
-        <p class="section-tagline">A quick intro about who I am</p>
-      </div>
-      <div class="section-grid">
-        <div class="card about-card">
-          <p>
-            I’m <strong>Kureti Hemanth Kumar</strong>, a B.Tech student in
-            <strong>Artificial Intelligence &amp; Machine Learning</strong> at
-            <strong>Marri Laxman Reddy Institute of Technology and Management</strong>.
-          </p>
-          <p>
-            I’m building my career as a <strong>Python Developer</strong>, working with
-            <strong>Python, Git, Linux, and programming fundamentals</strong> to make projects
-            and automation tasks efficient and scalable.
-          </p>
-        </div>
-        <div class="card about-card about-highlight">
-          <h3>What I’m Exploring</h3>
-          <ul class="pill-list">
-            <li>Python automation projects</li>
-            <li>Machine Learning basics</li>
-            <li>Linux & shell scripting fundamentals</li>
-            <li>Data processing and cloud tools</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+  <section id="about">
+    <div class="section-header">
+      <h2>About Me</h2>
+      <p class="section-tagline">A quick intro about who I am</p>
+    </div>
+    <div class="section-grid">
+      <div class="card">I’m <strong>Kureti Hemanth Kumar</strong>, a B.Tech student in <strong>AI & ML</strong>, exploring Python, automation and machine learning concepts.</div>
+      <div class="card">I work with <strong>Python, Git, Linux</strong> and build automation-friendly, scalable solutions.</div>
+    </div>
+  </section>
 
-    <!-- Education -->
-    <section id="education">
-      <div class="section-header">
-        <h2>Education</h2>
-        <p class="section-tagline">My academic journey</p>
-      </div>
-      <ul class="card-list">
-        <li class="card edu-card">
-          <img src="https://github.com/sadanandkonapur/profile/blob/main/assests/MLRITM.png?raw=true">
-          <div>
-            <strong>Marri Laxman Reddy Institute of Technology and Management</strong><br />
-            B.Tech in Artificial Intelligence &amp; Machine Learning<br />
-            <em>Expected Graduation: 2027</em>
-          </div>
-        </li>
+  <section id="education">
+    <div class="section-header">
+      <h2>Education</h2>
+      <p class="section-tagline">My academic journey</p>
+    </div>
+    <ul class="card-list">
+      <li class="card edu-card">
+        <img src="https://github.com/sadanandkonapur/profile/blob/main/assests/MLRITM.png?raw=true">
+        <div><strong>Marri Laxman Reddy Institute of Technology and Management</strong><br>B.Tech in AI & ML<br><em>Expected Graduation: 2027</em></div>
+      </li>
+      <li class="card edu-card">
+        <div><strong>Central Institute of Tool Design</strong><br>Diploma<br><em>Completed</em></div>
+      </li>
+    </ul>
+  </section>
 
-        <li class="card edu-card">
-          <div class="edu-bullet"></div>
-          <div>
-            <strong>Central Institute of Tool Design</strong><br />
-            Diploma<br />
-            <em>Completed</em>
-          </div>
-        </li>
-      </ul>
-    </section>
+  <section id="skills">
+    <div class="section-header"><h2>Skills</h2><p class="section-tagline">Technologies I use and explore</p></div>
+    <div class="section-grid">
+      <div class="card"><h3>Python Development</h3><p>Linux · Shell Scripting · Git · GitHub · VS Code · Cursor IDE</p></div>
+    </div>
+  </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <div class="section-header">
-        <h2>Skills</h2>
-        <p class="section-tagline">Technologies I use and explore</p>
-      </div>
+  <section id="projects">
+    <div class="section-header"><h2>Projects</h2><p class="section-tagline">Hands-on work that strengthened my skills</p></div>
+    <ul class="card-list">
+      <li class="card"><h3>Criminal Face Detection using Machine Learning</h3><p>ML model to detect & recognize faces using preprocessing, feature extraction and evaluation.</p></li>
+      <li class="card"><h3>Gas Detection using 8051 Microcontroller</h3><p>Gas detection system with alarms using embedded C and sensors.</p></li>
+    </ul>
+  </section>
 
-      <div class="skills-layout">
-        <div class="card">
-          <h3 class="subheading">Python Development</h3>
-          <div class="tag-list">
-            <span class="tag"><i class="devicon-linux-plain"></i>Linux</span>
-            <span class="tag"><i class="devicon-bash-plain"></i>Shell Scripting</span>
-            <span class="tag"><i class="devicon-git-plain"></i>Git</span>
-            <span class="tag"><i class="fab fa-github"></i>GitHub</span>
-            <span class="tag"><i class="devicon-vscode-plain"></i>VS Code</span>
-            <span class="tag"><i class="fa-solid fa-laptop-code"></i>Cursor IDE</span>
-          </div>
-        </div>
-      </div>
-    </section>
+  <section id="certifications">
+    <div class="section-header"><h2>Certifications</h2></div>
+    <ul class="card-list">
+      <li class="card"><strong>MongoDB – Infosys Springboard</strong></li>
+      <li class="card"><strong>Python Foundation – Infosys Springboard</strong></li>
+      <li class="card"><strong>Java – Infosys Springboard</strong></li>
+      <li class="card"><strong>Juniper Virtual Internship</strong></li>
+    </ul>
+  </section>
 
-    <!-- Projects -->
-    <section id="projects">
-      <div class="section-header">
-        <h2>Projects</h2>
-        <p class="section-tagline">Hands-on work that strengthened my skills</p>
-      </div>
-      <ul class="card-list project-list">
-        <li class="card">
-          <h3>Criminal Face Detection using Machine Learning</h3>
-          <p>
-            Developed a machine learning model to detect and recognize criminal faces
-            from image datasets. Focused on preprocessing, feature extraction, and model evaluation.
-          </p>
-          <p class="tech-stack">Tech Stack: Python, OpenCV, Scikit-learn</p>
-        </li>
-        <li class="card">
-          <h3>Gas Detection using 8051 Microcontroller</h3>
-          <p>
-            Built a gas detection system using the 8051 microcontroller and sensors.
-            Developed logic to alert users when gas levels exceed safe limits.
-          </p>
-          <p class="tech-stack">Tech Stack: 8051 Microcontroller, C, Sensors</p>
-        </li>
-      </ul>
-    </section>
+  <section id="contact">
+    <div class="section-header"><h2>Contact</h2><p class="section-tagline">Let’s connect and build something cool</p></div>
+    <div class="card"><p><strong>Email:</strong> kuretihemanth@gmail.com</p><p><strong>GitHub:</strong> github.com/Hemanth20044</p><p><strong>LinkedIn:</strong> linkedin.com/uas/login-submit</p></div>
+  </section>
 
-    <!-- Certifications -->
-    <section id="certifications">
-      <div class="section-header">
-        <h2>Certifications</h2>
-        <p class="section-tagline">Courses that strengthened my foundations</p>
-      </div>
-      <ul class="card-list">
-        <li class="card">
-          <strong>MongoDB – Infosys Springboard</strong>
-        </li>
-        <li class="card">
-          <strong>Python Foundation – Infosys Springboard</strong>
-        </li>
-        <li class="card">
-          <strong>Java – Infosys Springboard</strong>
-        </li>
-        <li class="card">
-          <strong>Juniper Virtual Internship</strong>
-        </li>
-      </ul>
-    </section>
+  <footer>© <span id="year"></span> Kureti Hemanth Kumar</footer>
 
-    <!-- Contact -->
-    <section id="contact">
-      <div class="section-header">
-        <h2>Contact</h2>
-        <p class="section-tagline">Let’s connect and build something cool</p>
-      </div>
-      <div class="card contact-card">
-        <p>
-          <i class="fas fa-envelope"></i>
-          <strong>Email:</strong>
-          <a href="mailto:kuretihemanth@gmail.com">kuretihemanth@gmail.com</a>
-        </p>
-        <p>
-          <i class="fab fa-github"></i>
-          <strong>GitHub:</strong>
-          <a href="https://github.com/Hemanth20044" target="_blank">github.com/Hemanth20044</a>
-        </p>
-        <p>
-          <i class="fab fa-linkedin"></i>
-          <strong>LinkedIn:</strong>
-          <a href="https://www.linkedin.com/uas/login-submit" target="_blank">
-            linkedin.com/uas/login-submit
-          </a>
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    © <span id="year"></span> Kureti Hemanth Kumar · Python Developer
-  </footer>
-
-  <!-- Scripts -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // Close nav on mobile after click
-      document.querySelectorAll('nav a').forEach(link => {
-        link.addEventListener('click', () => {
-          document.querySelector('nav').classList.remove('show');
-        });
-      });
+    const roles=["Python Developer","Machine Learning Enthusiast","Automation & Coding Lover"];let roleIndex=0,charIndex=0;const typingSpan=document.getElementById("typing");function type(){if(charIndex<roles[roleIndex].length){typingSpan.textContent+=roles[roleIndex].charAt(charIndex);charIndex++;setTimeout(type,120);}else setTimeout(erase,1300);}function erase(){if(charIndex>0){typingSpan.textContent=roles[roleIndex].substring(0,charIndex-1);charIndex--;setTimeout(erase,60);}else{roleIndex=(roleIndex+1)%roles.length;setTimeout(type,400);}}type();
 
-      // Typing effect (Python-focused roles)
-      const roles = [
-        "Python Developer",
-        "Machine Learning Enthusiast",
-        "Automation & Coding Lover"
-      ];
-      let roleIndex = 0, charIndex = 0;
-      const typingSpan = document.getElementById("typing");
+    const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('reveal');});},{threshold:.2});document.querySelectorAll('section').forEach(sec=>observer.observe(sec));
 
-      function type() {
-        if (charIndex < roles[roleIndex].length) {
-          typingSpan.textContent += roles[roleIndex].charAt(charIndex);
-          charIndex++;
-          setTimeout(type, 100);
-        } else {
-          setTimeout(erase, 1500);
-        }
-      }
-
-      function erase() {
-        if (charIndex > 0) {
-          typingSpan.textContent = roles[roleIndex].substring(0, charIndex - 1);
-          charIndex--;
-          setTimeout(erase, 50);
-        } else {
-          roleIndex = (roleIndex + 1) % roles.length;
-          setTimeout(type, 500);
-        }
-      }
-
-      setTimeout(type, 800);
-
-      // Reveal sections on scroll
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('reveal');
-          }
-        });
-      }, { threshold: 0.15 });
-
-      document.querySelectorAll('section').forEach(section => observer.observe(section));
-
-      // Hide/show navbar on scroll
-      let lastScrollTop = 0;
-      const navbar = document.getElementById('navbar');
-
-      window.addEventListener('scroll', function () {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        if (scrollTop > lastScrollTop) {
-          navbar.classList.add('hide');
-        } else {
-          navbar.classList.remove('hide');
-        }
-        lastScrollTop = scrollTop;
-      });
-
-      // Dynamic year in footer
-      document.getElementById('year').textContent = new Date().getFullYear();
-    });
+    let lastScroll=0;const navbar=document.getElementById("navbar");window.addEventListener("scroll",()=>{let curr=window.pageYOffset;if(curr>lastScroll)navbar.classList.add("hide");else navbar.classList.remove("hide");lastScroll=curr;});document.getElementById("year").textContent=new Date().getFullYear();
   </script>
+
 </body>
 </html>
