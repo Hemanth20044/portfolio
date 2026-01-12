@@ -1,182 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kureti Hemanth Kumar | Python Developer</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kureti Hemanth Kumar | Python Developer</title>
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; font-family: 'Inter', sans-serif; }
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-    body { background: #0e0e0e; color: #fff; overflow-x: hidden; }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter',sans-serif;
+  scroll-behavior:smooth;
+}
+body{
+  background:linear-gradient(135deg,#0a0f1f,#0d1226,#0a0f1f);
+  color:#fff;
+  overflow-x:hidden;
+}
 
-    nav { position: fixed; top: 0; left: 0; width: 100%; padding: 18px 50px; display: flex; justify-content: space-between; align-items: center; background: rgba(20,20,20,0.65); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.05); z-index: 1000; transition: .4s ease; }
-    nav.hide { transform: translateY(-100%); }
+/* NAVBAR */
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  padding:18px 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(20,20,20,.65);
+  backdrop-filter:blur(12px);
+  z-index:1000;
+  transition:.4s;
+}
+nav.hide{transform:translateY(-100%);}
+.nav-links a{
+  margin-left:25px;
+  color:#ccc;
+  text-decoration:none;
+  font-weight:500;
+}
+.nav-links a:hover{color:#0ef}
 
-    nav .nav-links a { margin-left: 25px; text-decoration: none; color: #ccc; transition: .3s; font-weight: 500; }
-    nav .nav-links a:hover { color: #0ef; }
+/* HERO */
+header{
+  min-height:100vh;
+  padding:120px 10%;
+  display:flex;
+  align-items:center;
+}
+.hero-layout{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:60px;
+  width:100%;
+}
+.hero-text h1{font-size:3.5rem}
+.hero-badge{color:#0ef;font-weight:600;margin-bottom:10px}
+.cursor{
+  width:3px;
+  background:#0ef;
+  display:inline-block;
+  animation:blink .8s infinite;
+}
+@keyframes blink{50%{opacity:0}}
 
-    header { min-height: 100vh; display: flex; align-items: center; padding: 120px 10% 0; }
+.hero-image img{
+  width:280px;
+  height:280px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #0ef;
+  box-shadow:0 0 30px #0ef6;
+  animation:floatPic 6s ease-in-out infinite;
+}
+@keyframes floatPic{
+  0%{transform:translateY(0)}
+  50%{transform:translateY(-15px)}
+  100%{transform:translateY(0)}
+}
 
-    .hero-text h1 { font-size: 3.5rem; font-weight: 700; }
-    .hero-badge { color: #0ef; font-weight: 600; margin-bottom: 10px; }
+/* BUTTONS */
+.btn{
+  display:inline-block;
+  padding:10px 20px;
+  border-radius:6px;
+  margin-top:15px;
+  margin-right:10px;
+  font-weight:500;
+  text-decoration:none;
+  transition:.3s;
+}
+.primary-btn{background:#0ef;color:#000}
+.primary-btn:hover{background:#00c8c8}
+.ghost-btn{border:1px solid #aaa;color:#aaa}
+.ghost-btn:hover{border-color:#0ef;color:#0ef}
 
-    .cursor { display: inline-block; width: 3px; background: #0ef; animation: blink .8s infinite; }
-    @keyframes blink { 50% { opacity: 0; } }
+/* SECTIONS */
+section{
+  padding:80px 10%;
+  opacity:0;
+  transform:translateY(40px);
+  transition:.9s;
+}
+section.reveal{
+  opacity:1;
+  transform:translateY(0);
+}
+.section-header{text-align:center;margin-bottom:40px}
+.section-header h2{font-size:2.4rem}
+.section-tagline{color:#aaa}
 
-    .btn { display: inline-block; padding: 10px 20px; border-radius: 6px; text-decoration: none; margin-top: 15px; margin-right: 10px; transition: .3s; font-weight: 500; }
-    .primary-btn { background: #0ef; color: #000; }
-    .primary-btn:hover { background: #00c8c8; }
+/* CARDS */
+.card{
+  background:#151515;
+  padding:25px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.05);
+  transition:.3s;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 0 18px #0ef5;
+}
+.section-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:25px;
+}
+.card-list{
+  list-style:none;
+  display:grid;
+  gap:20px;
+}
 
-    .ghost-btn { border: 1px solid #aaa; color: #aaa; }
-    .ghost-btn:hover { border-color: #0ef; color: #0ef; }
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  color:#777;
+}
 
-    section { padding: 80px 10%; opacity: 0; transform: translateY(40px); transition: .9s ease; }
-    section.reveal { opacity: 1; transform: translateY(0); }
-
-    .section-header { text-align: center; margin-bottom: 40px; }
-    .section-header h2 { font-size: 2.4rem; font-weight: 700; }
-    .section-tagline { color: #aaa; margin-top: 6px; }
-
-    .card { background: #151515; padding: 25px; border-radius: 14px; border: 1px solid rgba(255,255,255,0.05); transition: .3s ease; }
-    .card:hover { transform: translateY(-6px); }
-
-    .section-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 25px; }
-    ul.card-list { list-style: none; display: grid; gap: 20px; }
-
-    .edu-card img { width: 55px; margin-right: 15px; }
-    .edu-card { display: flex; align-items: center; gap: 15px; }
-
-    footer { text-align: center; padding: 30px; margin-top: 50px; color: #777; }
-    /* Floating background animation */
-  .shape { position: fixed; width: 180px; height: 180px; background: radial-gradient(circle, #0ef3 0%, #0ef1 40%, transparent 70%); border-radius: 50%; filter: blur(40px); animation: floatAnim 12s infinite ease-in-out; z-index: -1; }
-  .shape:nth-child(1){ top: 10%; left: 5%; animation-delay: 0s; }
-  .shape:nth-child(2){ bottom: 15%; right: 10%; animation-delay: 3s; }
-  @keyframes floatAnim { 0%{ transform: translateY(0) scale(1); opacity: .7; } 50%{ transform: translateY(-40px) scale(1.15); opacity: 1; } 100%{ transform: translateY(0) scale(1); opacity: .7; }}
-
-  /* Card glow hover */
-  .card:hover { box-shadow: 0 0 18px #0ef5; }
-
-  /* Hero fade-slide animation */
-  header .hero-text { animation: heroEnter 1.4s ease forwards; opacity: 0; transform: translateY(30px); }
-  @keyframes heroEnter { to { opacity: 1; transform: translateY(0); }}
-
-
-  /* ---------- PROFESSIONAL BACKGROUND DESIGN ---------- */
-  body { background: linear-gradient(135deg, #0a0f1f 0%, #0d1226 50%, #0a0f1f 100%); position: relative; overflow-x: hidden; }
-
-  .bg-shape { position: fixed; border-radius: 50%; filter: blur(80px); opacity: 0.45; animation: float 12s infinite ease-in-out; z-index: -2; }
-  .bg1 { width: 350px; height: 350px; background: #1e90ff55; top: -50px; left: -80px; animation-duration: 16s; }
-  .bg2 { width: 400px; height: 400px; background: #7f00ff55; bottom: -100px; right: -60px; animation-duration: 14s; }
-  .bg3 { width: 300px; height: 300px; background: #00eaff55; top: 60%; left: -120px; animation-duration: 18s; }
-
-  @keyframes float { 0%{ transform: translateY(0) translateX(0);} 50%{ transform: translateY(-50px) translateX(40px);} 100%{ transform: translateY(0) translateX(0);} }
-
-  .hero-layout::before { content:""; position:absolute; top:-60px; left:50%; transform:translateX(-50%); width:900px; height:300px; background: radial-gradient(circle,#1e90ff55,transparent 70%); filter:blur(100px); z-index:-1; opacity:0.6; }
-
+/* RESPONSIVE */
+@media(max-width:900px){
+  .hero-layout{
+    flex-direction:column-reverse;
+    text-align:center;
+  }
+  .hero-image img{
+    width:220px;
+    height:220px;
+  }
+}
 </style>
 </head>
+
 <body>
-  <div class="bg-shape bg1"></div>
-  <div class="bg-shape bg2"></div>
-  <div class="bg-shape bg3"></div>
-  <div class="shape"></div>
-  <div class="shape"></div>
 
-  <nav id="navbar">
-    <div class="nav-left"><span style="color:#0ef; font-size:22px; font-weight:700;">Hemanth</span></div>
-    <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#education">Education</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
-      <a href="#certifications">Certifications</a>
-      <a href="#contact">Contact</a>
-    </div>
-  </nav>
+<nav id="navbar">
+  <div style="color:#0ef;font-size:22px;font-weight:700;">Hemanth</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#certifications">Certifications</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
 
-  <header>
+<header>
+  <div class="hero-layout">
     <div class="hero-text">
       <p class="hero-badge">● Open to Internships · Python Development</p>
       <h1>Kureti Hemanth Kumar</h1>
       <p><span id="typing"></span><span class="cursor"></span></p>
-      <p style="max-width:500px; margin-top:10px; color:#ccc;">Python developer learning and building projects in automation, data processing, and machine learning.</p>
+      <p style="max-width:500px;color:#ccc;margin-top:10px;">
+        Python developer learning and building projects in automation,
+        data processing, and machine learning.
+      </p>
       <a href="#contact" class="btn primary-btn">Contact Me</a>
       <a href="https://github.com/Hemanth20044" target="_blank" class="btn ghost-btn">GitHub</a>
     </div>
-  </header>
 
-  <section id="about">
-    <div class="section-header">
-      <h2>About Me</h2>
-      <p class="section-tagline">A quick intro about who I am</p>
+    <div class="hero-image">
+      <img src="me 2.jpeg" alt="Kureti Hemanth Kumar">
     </div>
-    <div class="section-grid">
-      <div class="card">I’m <strong>Kureti Hemanth Kumar</strong>, a B.Tech student in <strong>AI & ML</strong>, exploring Python, automation and machine learning concepts.</div>
-      <div class="card">I work with <strong>Python, Git, Linux</strong> and build automation-friendly, scalable solutions.</div>
-    </div>
-  </section>
+  </div>
+</header>
 
-  <section id="education">
-    <div class="section-header">
-      <h2>Education</h2>
-      <p class="section-tagline">My academic journey</p>
-    </div>
-    <ul class="card-list">
-      <li class="card edu-card">
-        <img src="https://github.com/sadanandkonapur/profile/blob/main/assests/MLRITM.png?raw=true">
-        <div><strong>Marri Laxman Reddy Institute of Technology and Management</strong><br>B.Tech in AI & ML<br><em>Expected Graduation: 2027</em></div>
-      </li>
-      <li class="card edu-card">
-        <div><strong>Central Institute of Tool Design</strong><br>Diploma<br><em>Completed</em></div>
-      </li>
-    </ul>
-  </section>
-
-  <section id="skills">
-    <div class="section-header"><h2>Skills</h2><p class="section-tagline">Technologies I use and explore</p></div>
-    <div class="section-grid">
-      <div class="card"><h3>Python Development</h3><p>Linux · Shell Scripting · Git · GitHub · VS Code · Cursor IDE</p></div>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="section-header"><h2>Projects</h2><p class="section-tagline">Hands-on work that strengthened my skills</p></div>
-    <ul class="card-list">
-      <li class="card"><h3>Criminal Face Detection using Machine Learning</h3><p>ML model to detect & recognize faces using preprocessing, feature extraction and evaluation.</p></li>
-      <li class="card"><h3>Gas Detection using 8051 Microcontroller</h3><p>Gas detection system with alarms using embedded C and sensors.</p></li>
-    </ul>
-  </section>
-
-  <section id="certifications">
-    <div class="section-header"><h2>Certifications</h2></div>
-    <ul class="card-list">
-      <li class="card"><strong>MongoDB – Infosys Springboard</strong></li>
-      <li class="card"><strong>Python Foundation – Infosys Springboard</strong></li>
-      <li class="card"><strong>Java – Infosys Springboard</strong></li>
-      <li class="card"><strong>Juniper Virtual Internship</strong></li>
-    </ul>
-  </section>
-
-  <section id="contact">
-    <div class="section-header"><h2>Contact</h2><p class="section-tagline">Let’s connect and build something cool</p></div>
+<section id="about">
+  <div class="section-header">
+    <h2>About Me</h2>
+    <p class="section-tagline">A quick intro about who I am</p>
+  </div>
+  <div class="section-grid">
     <div class="card">
-  <p><strong>Email:</strong> <a href="mailto:kuretihemanth@gmail.com" style="color:#0ef; text-decoration:none;">kuretihemanth@gmail.com</a></p>
-  <p><strong>GitHub:</strong> <a href="https://github.com/Hemanth20044" target="_blank" style="color:#0ef; text-decoration:none;">github.com/Hemanth20044</a></p>
-  <p><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/hemanthkureti/" target="_blank" style="color:#0ef; text-decoration:none;">linkedin.com/in/hemanthkureti</a></p>
-</div>
-  </section>
+      I’m <strong>Kureti Hemanth Kumar</strong>, a B.Tech student in
+      <strong>AI & ML</strong>, exploring Python, automation and machine learning.
+    </div>
+    <div class="card">
+      I work with <strong>Python, Git, Linux</strong> and build scalable solutions.
+    </div>
+  </div>
+</section>
 
-  <footer>© <span id="year"></span> Kureti Hemanth Kumar</footer>
+<section id="education">
+  <div class="section-header">
+    <h2>Education</h2>
+  </div>
+  <ul class="card-list">
+    <li class="card">
+      <strong>MLRITM</strong><br>
+      B.Tech in AI & ML<br>
+      <em>Expected Graduation: 2027</em>
+    </li>
+    <li class="card">
+      <strong>Central Institute of Tool Design</strong><br>
+      Diploma
+    </li>
+  </ul>
+</section>
 
-  <script>
-    const roles=["Python Developer","Machine Learning Enthusiast","Automation & Coding Lover"];let roleIndex=0,charIndex=0;const typingSpan=document.getElementById("typing");function type(){if(charIndex<roles[roleIndex].length){typingSpan.textContent+=roles[roleIndex].charAt(charIndex);charIndex++;setTimeout(type,120);}else setTimeout(erase,1300);}function erase(){if(charIndex>0){typingSpan.textContent=roles[roleIndex].substring(0,charIndex-1);charIndex--;setTimeout(erase,60);}else{roleIndex=(roleIndex+1)%roles.length;setTimeout(type,400);}}type();
+<section id="skills">
+  <div class="section-header"><h2>Skills</h2></div>
+  <div class="section-grid">
+    <div class="card">Python · Git · Linux · VS Code · ML Basics</div>
+  </div>
+</section>
 
-    const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting)entry.target.classList.add('reveal');});},{threshold:.2});document.querySelectorAll('section').forEach(sec=>observer.observe(sec));
+<section id="projects">
+  <div class="section-header"><h2>Projects</h2></div>
+  <ul class="card-list">
+    <li class="card">Criminal Face Detection using Machine Learning</li>
+    <li class="card">Gas Detection using 8051 Microcontroller</li>
+  </ul>
+</section>
 
-    let lastScroll=0;const navbar=document.getElementById("navbar");window.addEventListener("scroll",()=>{let curr=window.pageYOffset;if(curr>lastScroll)navbar.classList.add("hide");else navbar.classList.remove("hide");lastScroll=curr;});document.getElementById("year").textContent=new Date().getFullYear();
-  </script>
+<section id="certifications">
+  <div class="section-header"><h2>Certifications</h2></div>
+  <ul class="card-list">
+    <li class="card">Python Foundation – Infosys</li>
+    <li class="card">MongoDB – Infosys</li>
+    <li class="card">Juniper Virtual Internship</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <div class="section-header"><h2>Contact</h2></div>
+  <div class="card">
+    <p>Email: <a href="mailto:kuretihemanth@gmail.com" style="color:#0ef;">kuretihemanth@gmail.com</a></p>
+    <p>GitHub: <a href="https://github.com/Hemanth20044" target="_blank" style="color:#0ef;">Hemanth20044</a></p>
+    <p>LinkedIn: <a href="https://www.linkedin.com/in/hemanthkureti/" target="_blank" style="color:#0ef;">hemanthkureti</a></p>
+  </div>
+</section>
+
+<footer>© <span id="year"></span> Kureti Hemanth Kumar</footer>
+
+<script>
+const roles=["Python Developer","Machine Learning Enthusiast","Automation Lover"];
+let r=0,c=0;
+const t=document.getElementById("typing");
+function type(){
+  if(c<roles[r].length){
+    t.textContent+=roles[r][c++];
+    setTimeout(type,120);
+  }else setTimeout(erase,1200);
+}
+function erase(){
+  if(c>0){
+    t.textContent=roles[r].substring(0,--c);
+    setTimeout(erase,60);
+  }else{
+    r=(r+1)%roles.length;
+    setTimeout(type,300);
+  }
+}
+type();
+
+const obs=new IntersectionObserver(e=>{
+  e.forEach(x=>x.isIntersecting&&x.target.classList.add("reveal"));
+},{threshold:.2});
+document.querySelectorAll("section").forEach(s=>obs.observe(s));
+
+let last=0;
+window.addEventListener("scroll",()=>{
+  const n=document.getElementById("navbar");
+  let cur=pageYOffset;
+  cur>last?n.classList.add("hide"):n.classList.remove("hide");
+  last=cur;
+});
+document.getElementById("year").textContent=new Date().getFullYear();
+</script>
 
 </body>
 </html>
