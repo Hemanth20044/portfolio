@@ -1,300 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kureti Hemanth Kumar | Python Developer</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
-  scroll-behavior:smooth;
-}
-body{
-  background:linear-gradient(135deg,#0a0f1f,#0d1226,#0a0f1f);
-  color:#fff;
-  overflow-x:hidden;
-}
-
-/* NAVBAR */
-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  padding:18px 50px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(20,20,20,.65);
-  backdrop-filter:blur(12px);
-  z-index:1000;
-  transition:.4s;
-}
-nav.hide{transform:translateY(-100%);}
-.nav-links a{
-  margin-left:25px;
-  color:#ccc;
-  text-decoration:none;
-  font-weight:500;
-}
-.nav-links a:hover{color:#0ef}
-
-/* HERO */
-header{
-  min-height:100vh;
-  padding:120px 10%;
-  display:flex;
-  align-items:center;
-}
-.hero-layout{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:60px;
-  width:100%;
-}
-.hero-text h1{font-size:3.5rem}
-.hero-badge{color:#0ef;font-weight:600;margin-bottom:10px}
-.cursor{
-  width:3px;
-  background:#0ef;
-  display:inline-block;
-  animation:blink .8s infinite;
-}
-@keyframes blink{50%{opacity:0}}
-
-.hero-image img{
-  width:280px;
-  height:280px;
-  border-radius:50%;
-  object-fit:cover;
-  border:4px solid #0ef;
-  box-shadow:0 0 30px #0ef6;
-  animation:floatPic 6s ease-in-out infinite;
-}
-@keyframes floatPic{
-  0%{transform:translateY(0)}
-  50%{transform:translateY(-15px)}
-  100%{transform:translateY(0)}
-}
-
-/* BUTTONS */
-.btn{
-  display:inline-block;
-  padding:10px 20px;
-  border-radius:6px;
-  margin-top:15px;
-  margin-right:10px;
-  font-weight:500;
-  text-decoration:none;
-  transition:.3s;
-}
-.primary-btn{background:#0ef;color:#000}
-.primary-btn:hover{background:#00c8c8}
-.ghost-btn{border:1px solid #aaa;color:#aaa}
-.ghost-btn:hover{border-color:#0ef;color:#0ef}
-
-/* SECTIONS */
-section{
-  padding:80px 10%;
-  opacity:0;
-  transform:translateY(40px);
-  transition:.9s;
-}
-section.reveal{
-  opacity:1;
-  transform:translateY(0);
-}
-.section-header{text-align:center;margin-bottom:40px}
-.section-header h2{font-size:2.4rem}
-.section-tagline{color:#aaa}
-
-/* CARDS */
-.card{
-  background:#151515;
-  padding:25px;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.05);
-  transition:.3s;
-}
-.card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 0 18px #0ef5;
-}
-.section-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:25px;
-}
-.card-list{
-  list-style:none;
-  display:grid;
-  gap:20px;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:30px;
-  color:#777;
-}
-
-/* RESPONSIVE */
-@media(max-width:900px){
-  .hero-layout{
-    flex-direction:column-reverse;
-    text-align:center;
-  }
-  .hero-image img{
-    width:220px;
-    height:220px;
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
 </head>
-
 <body>
-
-<nav id="navbar">
-  <div style="color:#0ef;font-size:22px;font-weight:700;">Hemanth</div>
-  <div class="nav-links">
-    <a href="#about">About</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
-
-<header>
-  <div class="hero-layout">
-    <div class="hero-text">
-      <p class="hero-badge">● Open to Internships · Python Development</p>
-      <h1>Kureti Hemanth Kumar</h1>
-      <p><span id="typing"></span><span class="cursor"></span></p>
-      <p style="max-width:500px;color:#ccc;margin-top:10px;">
-        Python developer learning and building projects in automation,
-        data processing, and machine learning.
-      </p>
-      <a href="#contact" class="btn primary-btn">Contact Me</a>
-      <a href="https://github.com/Hemanth20044" target="_blank" class="btn ghost-btn">GitHub</a>
+    <div id="projects">
+        <h2>Projects</h2>
+        <div id="cube-scene"></div>
     </div>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('cube-scene').appendChild(renderer.domElement);
 
-    <div class="hero-image">
-      <img src="me 2.jpeg" alt="Kureti Hemanth Kumar">
-    </div>
-  </div>
-</header>
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+        const cube = new THREE.Mesh(geometry, material);
+        scene.add(cube);
 
-<section id="about">
-  <div class="section-header">
-    <h2>About Me</h2>
-    <p class="section-tagline">A quick intro about who I am</p>
-  </div>
-  <div class="section-grid">
-    <div class="card">
-      I’m <strong>Kureti Hemanth Kumar</strong>, a B.Tech student in
-      <strong>AI & ML</strong>, exploring Python, automation and machine learning.
-    </div>
-    <div class="card">
-      I work with <strong>Python, Git, Linux</strong> and build scalable solutions.
-    </div>
-  </div>
-</section>
+        camera.position.z = 5;
 
-<section id="education">
-  <div class="section-header">
-    <h2>Education</h2>
-  </div>
-  <ul class="card-list">
-    <li class="card">
-      <strong>MLRITM</strong><br>
-      B.Tech in AI & ML<br>
-      <em>Expected Graduation: 2027</em>
-    </li>
-    <li class="card">
-      <strong>Central Institute of Tool Design</strong><br>
-      Diploma
-    </li>
-  </ul>
-</section>
-
-<section id="skills">
-  <div class="section-header"><h2>Skills</h2></div>
-  <div class="section-grid">
-    <div class="card">Python · Git · Linux · VS Code · ML Basics</div>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="section-header"><h2>Projects</h2></div>
-  <ul class="card-list">
-    <li class="card">Criminal Face Detection using Machine Learning</li>
-    <li class="card">Gas Detection using 8051 Microcontroller</li>
-  </ul>
-</section>
-
-<section id="certifications">
-  <div class="section-header"><h2>Certifications</h2></div>
-  <ul class="card-list">
-    <li class="card">Python Foundation – Infosys</li>
-    <li class="card">MongoDB – Infosys</li>
-    <li class="card">Juniper Virtual Internship</li>
-  </ul>
-</section>
-
-<section id="contact">
-  <div class="section-header"><h2>Contact</h2></div>
-  <div class="card">
-    <p>Email: <a href="mailto:kuretihemanth@gmail.com" style="color:#0ef;">kuretihemanth@gmail.com</a></p>
-    <p>GitHub: <a href="https://github.com/Hemanth20044" target="_blank" style="color:#0ef;">Hemanth20044</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/hemanthkureti/" target="_blank" style="color:#0ef;">hemanthkureti</a></p>
-  </div>
-</section>
-
-<footer>© <span id="year"></span> Kureti Hemanth Kumar</footer>
-
-<script>
-const roles=["Python Developer","Machine Learning Enthusiast","Automation Lover"];
-let r=0,c=0;
-const t=document.getElementById("typing");
-function type(){
-  if(c<roles[r].length){
-    t.textContent+=roles[r][c++];
-    setTimeout(type,120);
-  }else setTimeout(erase,1200);
-}
-function erase(){
-  if(c>0){
-    t.textContent=roles[r].substring(0,--c);
-    setTimeout(erase,60);
-  }else{
-    r=(r+1)%roles.length;
-    setTimeout(type,300);
-  }
-}
-type();
-
-const obs=new IntersectionObserver(e=>{
-  e.forEach(x=>x.isIntersecting&&x.target.classList.add("reveal"));
-},{threshold:.2});
-document.querySelectorAll("section").forEach(s=>obs.observe(s));
-
-let last=0;
-window.addEventListener("scroll",()=>{
-  const n=document.getElementById("navbar");
-  let cur=pageYOffset;
-  cur>last?n.classList.add("hide"):n.classList.remove("hide");
-  last=cur;
-});
-document.getElementById("year").textContent=new Date().getFullYear();
-</script>
-
+        function animate() {
+            requestAnimationFrame(animate);
+            cube.rotation.x += 0.01;
+            cube.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+    </script>
 </body>
 </html>
