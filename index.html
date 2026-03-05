@@ -235,14 +235,14 @@ nav ul li a:hover{
 
 section{
     padding:100px 10%;
-    opacity:0;
-    transform:translateY(40px);
+    opacity:1;
+    transform:translateY(0);
     transition:0.8s;
 }
 
-section.active{
-    opacity:1;
-    transform:translateY(0);
+section.hidden{
+    opacity:0;
+    transform:translateY(40px);
 }
 
 section h2{
@@ -860,13 +860,19 @@ function toggleMenu(){
 }
 
 const sections = document.querySelectorAll("section");
+// Add hidden class initially for scroll animation
+sections.forEach(sec => sec.classList.add('hidden'));
+
 window.addEventListener("scroll", () => {
     sections.forEach(sec => {
         if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
-            sec.classList.add("active");
+            sec.classList.remove('hidden');
         }
     });
 });
+
+// Trigger once on load in case sections are already in view
+window.dispatchEvent(new Event('scroll'));
 
 particlesJS("particles-js", {
   particles: {
